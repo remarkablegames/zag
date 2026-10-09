@@ -2,7 +2,7 @@
   <img src="public/logo192.png" alt="LittleJS Template">
 </p>
 
-# LittleJS Template
+# Zag
 
 [![release](https://img.shields.io/github/v/release/remarkablegames/littlejs-template)](https://github.com/remarkablegames/littlejs-template/releases)
 [![build](https://github.com/remarkablegames/littlejs-template/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/littlejs-template/actions/workflows/build.yml)
