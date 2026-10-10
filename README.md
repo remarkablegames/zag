@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/logo192.png" alt="Zag">
+  <img src="public/logo.svg" alt="Zag">
 </p>
 
 # Zag
