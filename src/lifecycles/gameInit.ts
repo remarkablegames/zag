@@ -2,9 +2,11 @@ import {
   setCameraScale,
   setDebugOverlay,
   setDebugWatermark,
+  WavedashPlugin,
 } from 'littlejsengine';
 
 import { setGame } from '../shared';
+import { HIGH_SCORE_LEADERBOARD } from '../utils';
 import { ZagCover } from '../zag/cover';
 import { ZagGame } from '../zag/game';
 
@@ -26,4 +28,10 @@ export function gameInit() {
   const game = isCover ? new ZagCover() : new ZagGame();
   setGame(game);
   game.init();
+
+  // made last, so `Wavedash.init` runs once the game can draw:
+  // until it does the SDK keeps its loading screen over the game.
+  // Higher wins and a plain number are both what Zag wants,
+  // so the board needs nothing but the name it shows under on the game page.
+  new WavedashPlugin({ [HIGH_SCORE_LEADERBOARD]: {} });
 }

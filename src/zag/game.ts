@@ -10,7 +10,7 @@ import {
 } from 'littlejsengine';
 
 import { Ui } from '../ui';
-import { getBestScore, saveBestScore } from '../utils';
+import { getHighScore, loadHighScore, saveHighScore } from '../utils';
 import { BALL_DIAMETER, BASE_SPEED, PATH_TOLERANCE, ZagScene } from './scene';
 import { fallSound, gameOverSound, scoreSound, turnSound } from './sounds';
 
@@ -37,12 +37,12 @@ export class ZagGame extends ZagScene {
   private fallVelocity = vec2();
 
   private score = 0;
-  private best = 0;
+  private highScore = 0;
   private fallTime = 0;
   private inputArmed = true;
 
   init(): void {
-    this.best = getBestScore();
+    this.highScore = getHighScore();
     this.ui.setHandlers({
       onStart: () => {
         this.start();
@@ -52,7 +52,17 @@ export class ZagGame extends ZagScene {
       },
     });
     this.reset();
-    this.ui.showStart(this.best);
+    this.ui.showStart(this.highScore);
+
+    // Wavedash may hold a higher score from another device; raise this
+    // one when it lands, so a run that only beats the local score does
+    // not claim a new high score
+    void loadHighScore().then((highScore) => {
+      if (highScore > this.highScore) {
+        this.highScore = highScore;
+        this.ui.setHighScore(highScore);
+      }
+    });
   }
 
   /** Start a new run from the first corner. */
@@ -190,13 +200,13 @@ export class ZagGame extends ZagScene {
     if (this.fallTime >= FALL_DURATION) {
       this.state = 'gameover';
       this.dimBackground();
-      const newBest = this.score > this.best;
-      if (newBest) {
-        this.best = this.score;
-        saveBestScore(this.score);
+      const newHighScore = this.score > this.highScore;
+      if (newHighScore) {
+        this.highScore = this.score;
+        saveHighScore(this.score);
       }
       gameOverSound.play();
-      this.ui.showGameOver(this.score, this.best, newBest);
+      this.ui.showGameOver(this.score, this.highScore, newHighScore);
     }
   }
 }

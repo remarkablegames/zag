@@ -68,7 +68,7 @@
   color: rgb(255 255 255 / 75%);
 }
 
-.zag-best {
+.zag-high-score {
   margin: 0;
   font-size: clamp(14px, 2.5vmin, 18px);
   font-weight: 600;

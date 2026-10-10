@@ -40,7 +40,7 @@ export class Ui {
   private readonly score: HTMLDivElement;
   private readonly title: HTMLHeadingElement;
   private readonly message: HTMLParagraphElement;
-  private readonly best: HTMLParagraphElement;
+  private readonly highScore: HTMLParagraphElement;
   private readonly button: HTMLButtonElement;
   private handlers: UiHandlers = { onStart: noop, onRestart: noop };
   private mode: 'start' | 'gameover' = 'start';
@@ -56,8 +56,8 @@ export class Ui {
     this.message = document.createElement('p');
     this.message.className = 'zag-message';
 
-    this.best = document.createElement('p');
-    this.best.className = 'zag-best';
+    this.highScore = document.createElement('p');
+    this.highScore.className = 'zag-high-score';
 
     this.button = document.createElement('button');
     this.button.className = 'zag-button';
@@ -67,7 +67,7 @@ export class Ui {
 
     this.card = document.createElement('div');
     this.card.className = 'zag-card';
-    this.card.append(this.title, this.message, this.best, this.button);
+    this.card.append(this.title, this.message, this.highScore, this.button);
 
     const overlay = document.createElement('div');
     overlay.className = 'zag-overlay';
@@ -81,14 +81,19 @@ export class Ui {
   }
 
   /** Show the start card. */
-  showStart(best: number): void {
+  showStart(highScore: number): void {
     this.mode = 'start';
     this.title.textContent = 'ZAG';
     this.message.textContent = 'Tap, click, or press Space to turn';
-    this.best.textContent = `Best: ${String(best)}`;
+    this.setHighScore(highScore);
     this.button.textContent = 'Play';
     this.score.hidden = true;
     this.card.hidden = false;
+  }
+
+  /** Show the high score, which Wavedash may raise after the card does. */
+  setHighScore(highScore: number): void {
+    this.highScore.textContent = `High score: ${String(highScore)}`;
   }
 
   /** Hide the card so only the live score shows while a run is in progress. */
@@ -122,14 +127,14 @@ export class Ui {
       };
   }
 
-  /** Show the game over card with the final score and best. */
-  showGameOver(score: number, best: number, newBest: boolean): void {
+  /** Show the game over card with the final score and high score. */
+  showGameOver(score: number, highScore: number, newHighScore: boolean): void {
     this.mode = 'gameover';
     this.title.textContent = 'GAME OVER';
-    this.message.textContent = newBest
-      ? 'New best score!'
+    this.message.textContent = newHighScore
+      ? 'New high score!'
       : `Score: ${String(score)}`;
-    this.best.textContent = `Best: ${String(best)}`;
+    this.setHighScore(highScore);
     this.button.textContent = 'Restart';
     this.score.hidden = true;
     this.card.hidden = false;
