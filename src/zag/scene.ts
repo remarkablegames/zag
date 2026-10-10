@@ -346,26 +346,42 @@ export abstract class ZagScene {
       this.path.segmentCount - 1,
       this.segmentIndex + PATH_AHEAD,
     );
+    // shadow under the path gives it some depth
+    const shadowOffset = vec2(0.12, -0.18);
+    const shadowColor = hsl(0, 0, 0, 0.25);
 
-    for (let i = first; i <= last; i++) {
-      const a = this.path.corners[i];
-      const b = this.path.corners[i + 1];
-      const color = this.pathColor(i);
-
-      // shadow under the path gives it some depth
-      const shadow = vec2(0.12, -0.18);
-      drawLine(
-        a.add(shadow),
-        b.add(shadow),
+    // every shadow first, so none of them tints the path drawn over it
+    for (let i = first; i <= last; i++)
+      this.drawSegment(
+        this.path.corners[i].add(shadowOffset),
+        this.path.corners[i + 1].add(shadowOffset),
         PATH_WIDTH + 0.15,
-        hsl(0, 0, 0, 0.25),
+        shadowColor,
       );
 
-      drawLine(a, b, PATH_WIDTH, color);
-      // round the corners where segments meet
-      drawCircle(a, PATH_WIDTH, color);
-      drawCircle(b, PATH_WIDTH, color);
-    }
+    for (let i = first; i <= last; i++)
+      this.drawSegment(
+        this.path.corners[i],
+        this.path.corners[i + 1],
+        PATH_WIDTH,
+        this.pathColor(i),
+      );
+  }
+
+  /**
+   * A segment with a round cap at each end, the cap the same diameter
+   * as the line is wide, so neighbors meeting at a corner read as one
+   * continuous ribbon instead of a sharp joint.
+   */
+  private drawSegment(
+    a: Vector2,
+    b: Vector2,
+    width: number,
+    color: Color,
+  ): void {
+    drawLine(a, b, width, color);
+    drawCircle(a, width, color);
+    drawCircle(b, width, color);
   }
 
   private renderTrail(): void {
