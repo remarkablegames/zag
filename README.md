@@ -36,13 +36,6 @@ Install the dependencies:
 npm install
 ```
 
-Update the files:
-
-- [ ] `README.md`
-- [ ] `package.json`
-- [ ] `index.html`
-- [ ] `public/manifest.webmanifest`
-
 ## Available Scripts
 
 In the project directory, you can run:
