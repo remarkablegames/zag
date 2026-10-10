@@ -3,8 +3,12 @@ import { readSaveData, wavedash, writeSaveData } from 'littlejsengine';
 
 const SAVE_KEY = 'org.remarkablegames.zag';
 
-/** The leaderboard the game posts to, named as it shows on the game page. */
-export const HIGH_SCORE_LEADERBOARD = 'high-score';
+/**
+ * The Wavedash leaderboard key.
+ *
+ * {@link https://wavedash.com/dev-portal/remarkablegames/zig-zag/leaderboards}
+ */
+export const HIGH_SCORE_LEADERBOARD = 'high_score';
 
 /** Cloud save slot holding the high score, kept by Wavedash across devices. */
 const CLOUD_SLOT = 0;
