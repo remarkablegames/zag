@@ -5,13 +5,12 @@ import {
   keyWasPressed,
   mouseIsDown,
   mouseWasPressed,
-  readSaveData,
   timeDelta,
   vec2,
-  writeSaveData,
 } from 'littlejsengine';
 
 import { Ui } from '../ui';
+import { getBestScore, saveBestScore } from '../utils';
 import { BALL_DIAMETER, BASE_SPEED, PATH_TOLERANCE, ZagScene } from './scene';
 import { fallSound, gameOverSound, scoreSound, turnSound } from './sounds';
 
@@ -23,8 +22,6 @@ const MILESTONE = 10;
 
 const FALL_GRAVITY = 25;
 const FALL_DURATION = 0.8;
-
-const SAVE_KEY = 'org.remarkablegames.zag';
 
 type GameState = 'ready' | 'playing' | 'falling' | 'gameover';
 
@@ -45,7 +42,7 @@ export class ZagGame extends ZagScene {
   private inputArmed = true;
 
   init(): void {
-    this.best = readSaveData(SAVE_KEY, { best: 0 }).best;
+    this.best = getBestScore();
     this.ui.setHandlers({
       onStart: () => {
         this.start();
@@ -196,7 +193,7 @@ export class ZagGame extends ZagScene {
       const newBest = this.score > this.best;
       if (newBest) {
         this.best = this.score;
-        writeSaveData(SAVE_KEY, { best: this.best });
+        saveBestScore(this.score);
       }
       gameOverSound.play();
       this.ui.showGameOver(this.score, this.best, newBest);
