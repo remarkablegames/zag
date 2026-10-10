@@ -1,7 +1,7 @@
-import type { ZagGame } from './zag/game';
+import type { ZagScene } from './zag/scene';
 
-let _game: ZagGame;
+let _game: ZagScene;
 
-export const setGame = (game: ZagGame) => (_game = game);
+export const setGame = (game: ZagScene) => (_game = game);
 
 export const getGame = () => _game;
