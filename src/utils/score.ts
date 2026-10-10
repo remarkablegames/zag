@@ -10,6 +10,18 @@ const SAVE_KEY = 'org.remarkablegames.zag';
  */
 export const HIGH_SCORE_LEADERBOARD = 'high_score';
 
+/**
+ * The Wavedash stats the achievements follow, a separate namespace
+ * from the leaderboard above. Wavedash only takes uppercase ids for
+ * these, so they do not match its key, which the game page shows.
+ * The portal turns a stat crossing a threshold into an achievement,
+ * so score tiers need no code.
+ *
+ * {@link https://wavedash.com/dev-portal/remarkablegames/zig-zag/stats}
+ */
+const HIGH_SCORE_STAT = 'HIGH_SCORE';
+const RUNS_STAT = 'RUNS';
+
 /** Cloud save slot holding the high score, kept by Wavedash across devices. */
 const CLOUD_SLOT = 0;
 
@@ -33,10 +45,12 @@ export const getHighScore = (): number =>
 export function saveHighScore(highScore: number): void {
   writeSaveData(SAVE_KEY, { highScore });
 
-  // fire and forget: off Wavedash both do nothing, and the leaderboard
-  // keeps the best itself, so a worse run is discarded there anyway
+  // fire and forget: off Wavedash all three do nothing, and the
+  // leaderboard keeps the best itself, so a worse run is discarded
+  // there anyway
   void wavedash?.postScore(HIGH_SCORE_LEADERBOARD, highScore);
   void wavedash?.cloudSave(CLOUD_SLOT, { highScore });
+  void wavedash?.setStat(HIGH_SCORE_STAT, highScore, true);
 }
 
 /**
@@ -65,8 +79,22 @@ export async function loadHighScore(): Promise<number> {
   }
 
   if (highScore !== saved.highScore) {
-    await wavedash?.cloudSave(CLOUD_SLOT, { highScore });
+    void wavedash?.cloudSave(CLOUD_SLOT, { highScore });
   }
 
+  // another device may hold the higher score, so the stat follows it
+  // and the achievements gated on it come along
+  void wavedash?.setStat(HIGH_SCORE_STAT, highScore, true);
+
   return highScore;
+}
+
+/**
+ * Count a completed run, which the runs-played achievements follow.
+ * getStat reads the player's real count, waiting on their stats to
+ * load, so a run ended before they arrive does not reset it to 1.
+ */
+export async function countRun(): Promise<void> {
+  const runs = ((await wavedash?.getStat(RUNS_STAT)) ?? 0) + 1;
+  await wavedash?.setStat(RUNS_STAT, runs, true);
 }

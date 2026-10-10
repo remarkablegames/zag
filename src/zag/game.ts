@@ -10,7 +10,7 @@ import {
 } from 'littlejsengine';
 
 import { Ui } from '../ui';
-import { getHighScore, loadHighScore, saveHighScore } from '../utils';
+import { countRun, getHighScore, loadHighScore, saveHighScore } from '../utils';
 import { BALL_DIAMETER, BASE_SPEED, PATH_TOLERANCE, ZagScene } from './scene';
 import { fallSound, gameOverSound, scoreSound, turnSound } from './sounds';
 
@@ -205,6 +205,8 @@ export class ZagGame extends ZagScene {
         this.highScore = this.score;
         saveHighScore(this.score);
       }
+      // a finished run, which the runs-played achievements follow
+      void countRun();
       gameOverSound.play();
       this.ui.showGameOver(this.score, this.highScore, newHighScore);
     }
