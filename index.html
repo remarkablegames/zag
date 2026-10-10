@@ -2,16 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link rel="icon" href="favicon.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <link rel="icon" href="favicon.png" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web game created using littlejs-template"
-    />
+    <meta name="description" content="⚡ Zig zag your way forward!" />
     <link rel="apple-touch-icon" href="logo192.png" />
+    <meta
+      property="og:image"
+      content="https://remarkablegames.org/zag/logo512.png"
+    />
 
     <!--
       manifest.webmanifest provides metadata used when your web app is installed on a
@@ -25,7 +26,7 @@
     <% if (process.env.BUNDLE !== 'true') { %>
     <script
       src="https://unpkg.com/github-corners/dist/embed.min.js"
-      data-href="https://github.com/remarkablegames/littlejs-template"
+      data-href="https://github.com/remarkablegames/zag"
       data-target="_blank"
       async
       defer
@@ -41,11 +42,10 @@
     </style>
     <% } %>
 
-    <title>LittleJS Template | remarkablegames</title>
+    <title>Zag | remarkablegames</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to play this game.</noscript>
-
     <script type="module" src="src/game.ts"></script>
   </body>
 </html>

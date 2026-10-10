@@ -1,17 +1,17 @@
 <p align="center">
-  <img src="public/logo192.png" alt="LittleJS Template">
+  <img src="public/logo192.png" alt="Zag">
 </p>
 
 # Zag
 
-[![release](https://img.shields.io/github/v/release/remarkablegames/littlejs-template)](https://github.com/remarkablegames/littlejs-template/releases)
-[![build](https://github.com/remarkablegames/littlejs-template/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/littlejs-template/actions/workflows/build.yml)
+[![release](https://img.shields.io/github/v/release/remarkablegames/zag)](https://github.com/remarkablegames/zag/releases)
+[![build](https://github.com/remarkablegames/zag/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/zag/actions/workflows/build.yml)
 
-<kbd>littlejs-template</kbd> is a template for making [LittleJS](https://github.com/KilledByAPixel/LittleJS) games.
+⚡ Zig zag your way forward!
 
 Play the game on:
 
-- [remarkablegames](https://remarkablegames.org/littlejs-template/)
+- [remarkablegames](https://remarkablegames.org/zag/)
 
 ## Prerequisites
 
@@ -26,8 +26,8 @@ brew install nvm
 Clone the repository:
 
 ```sh
-git clone https://github.com/remarkablegames/littlejs-template.git
-cd littlejs-template
+git clone https://github.com/remarkablegames/zag.git
+cd zag
 ```
 
 Install the dependencies:
@@ -36,44 +36,12 @@ Install the dependencies:
 npm install
 ```
 
-Rename the project:
-
-```sh
-git grep -l littlejs-template | xargs sed -i '' -e 's/littlejs-template/my-game/g'
-git grep -l 'LittleJS Template' | xargs sed -i '' -e 's/LittleJS Template/My Game/g'
-```
-
 Update the files:
 
 - [ ] `README.md`
 - [ ] `package.json`
 - [ ] `index.html`
 - [ ] `public/manifest.webmanifest`
-- [ ] `src/game.ts`
-
-Initialize a new repository:
-
-```sh
-rm -rf .git
-git init
-```
-
-Make your first commit:
-
-```sh
-git add .
-git commit -m 'feat: initialize project from littlejs-template'
-```
-
-> [!NOTE]
-> Commit messages follow [Conventional Commits](https://conventionalcommits.org/), which helps with release.
-
-Once you're ready, [push the local repository to GitHub](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/) (or another remote repository):
-
-```sh
-git remote add origin <remote-repository-url>
-git push origin -u origin master
-```
 
 ## Available Scripts
 
@@ -103,7 +71,7 @@ Your game is ready to be deployed!
 
 Builds the game and packages it into a Zip file in the `dist` folder.
 
-Your game can be uploaded to your server, [Itch.io](https://itch.io/), [Newgrounds](https://www.newgrounds.com/), etc.
+Your game can be uploaded to your server, [itch.io](https://itch.io/), etc.
 
 ## License
 
