@@ -2,6 +2,29 @@ import './style.css';
 
 import { noop } from './utils';
 
+/** Class that gives a milestone its glow, removed once its pop lands. */
+const MILESTONE_CLASS = 'zag-score--milestone';
+
+/** Pop the score gets whenever it changes. */
+const SCORE_KEYFRAMES = [
+  { transform: 'translateX(-50%) scale(1.25)' },
+  { transform: 'translateX(-50%) scale(1)' },
+];
+const SCORE_ANIMATION: KeyframeAnimationOptions = {
+  duration: 160,
+  easing: 'ease-out',
+};
+
+/** A milestone pops taller and slower, so it reads as more than one point. */
+const MILESTONE_KEYFRAMES = [
+  { transform: 'translateX(-50%) scale(1.6)' },
+  { transform: 'translateX(-50%) scale(1)' },
+];
+const MILESTONE_ANIMATION: KeyframeAnimationOptions = {
+  duration: 320,
+  easing: 'ease-out',
+};
+
 export interface UiHandlers {
   onStart: () => void;
   onRestart: () => void;
@@ -73,18 +96,30 @@ export class Ui {
     this.card.hidden = true;
   }
 
+  /** Tint the score to the backdrop's current hue, so the two stay in step. */
+  setHue(hue: number): void {
+    this.score.style.setProperty('--zag-hue', String(hue));
+  }
+
   /** Update the live score, popping the number when it changes. */
-  setScore(score: number): void {
+  setScore(score: number, milestoneHue?: number): void {
     if (!this.score.hidden && this.score.textContent === String(score)) return;
     this.score.textContent = String(score);
     this.score.hidden = false;
-    this.score.animate(
-      [
-        { transform: 'translateX(-50%) scale(1.25)' },
-        { transform: 'translateX(-50%) scale(1)' },
-      ],
-      { duration: 160, easing: 'ease-out' },
+
+    const milestone = milestoneHue !== undefined;
+    if (milestone) {
+      this.setHue(milestoneHue);
+      this.score.classList.add(MILESTONE_CLASS);
+    }
+    const animation = this.score.animate(
+      milestone ? MILESTONE_KEYFRAMES : SCORE_KEYFRAMES,
+      milestone ? MILESTONE_ANIMATION : SCORE_ANIMATION,
     );
+    if (milestone)
+      animation.onfinish = () => {
+        this.score.classList.remove(MILESTONE_CLASS);
+      };
   }
 
   /** Show the game over card with the final score and best. */

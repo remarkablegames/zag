@@ -28,7 +28,14 @@
   transform: translateX(-50%);
   font-size: clamp(40px, 8vmin, 64px);
   font-weight: 800;
+  /* tinted to the hue the scene has stepped the backdrop to */
+  color: hsl(calc(var(--zag-hue, 0.68) * 360deg) 55% 82%);
   text-shadow: 0 2px 12px rgb(0 0 0 / 35%);
+  transition: color 400ms ease;
+}
+
+.zag-score--milestone {
+  text-shadow: 0 2px 28px rgb(255 255 255 / 55%);
 }
 
 .zag-card {

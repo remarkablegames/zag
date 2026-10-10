@@ -1,7 +1,5 @@
 import {
-  hsl,
   setCameraScale,
-  setCanvasClearColor,
   setDebugOverlay,
   setDebugWatermark,
 } from 'littlejsengine';
@@ -10,16 +8,13 @@ import { setGame } from '../shared';
 import { ZagCover } from '../zag/cover';
 import { ZagGame } from '../zag/game';
 
-// deep indigo backdrop that contrasts with the bright path
-const BACKGROUND_COLOR = hsl(0.68, 0.45, 0.1);
-
 /** Query parameter that renders the animated cover instead of the game. */
 const COVER_PARAM = 'cover';
 
 export function gameInit() {
-  // zoom in so the path fills a comfortable part of the screen
+  // zoom in so the path fills a comfortable part of the screen;
+  // the scene owns the backdrop color from here on
   setCameraScale(32);
-  setCanvasClearColor(BACKGROUND_COLOR);
 
   const isCover = new URLSearchParams(location.search).has(COVER_PARAM);
   if (isCover) {

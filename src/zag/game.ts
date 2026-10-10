@@ -18,6 +18,9 @@ import { fallSound, gameOverSound, scoreSound, turnSound } from './sounds';
 const MAX_SPEED = 10;
 const SPEED_PER_SCORE = 0.12;
 
+/** Points between backdrop hue steps and milestone bursts. */
+const MILESTONE = 10;
+
 const FALL_GRAVITY = 25;
 const FALL_DURATION = 0.8;
 
@@ -99,6 +102,8 @@ export class ZagGame extends ZagScene {
     this.score = 0;
     this.fallTime = 0;
     this.ui.setScore(0);
+    // a fresh run picks up the backdrop's new hue
+    this.ui.setHue(this.currentHue());
   }
 
   /** True on the frame a turn is requested by mouse, touch, key or pad. */
@@ -139,8 +144,14 @@ export class ZagGame extends ZagScene {
     ) {
       this.advanceSegment();
       this.score++;
-      this.ui.setScore(this.score);
+      // the corner just crossed is where the new segment now starts
+      const crossed = this.path.corners[this.segmentIndex];
+      const milestone = this.score % MILESTONE === 0;
+      if (milestone) this.milestone();
+      else this.scorePoint(crossed);
       scoreSound.play(this.ball);
+      // a milestone also tints the score to the backdrop's new hue
+      this.ui.setScore(this.score, milestone ? this.currentHue() : undefined);
     }
 
     // the ball has drifted off the path
@@ -167,6 +178,7 @@ export class ZagGame extends ZagScene {
     this.state = 'falling';
     this.fallTime = 0;
     this.fallVelocity = this.direction.scale(this.speed());
+    this.fallApart();
     fallSound.play(this.ball);
   }
 
@@ -175,9 +187,12 @@ export class ZagGame extends ZagScene {
     this.fallVelocity = this.fallVelocity.add(vec2(0, -FALL_GRAVITY * dt));
     this.ball = this.ball.add(this.fallVelocity.scale(dt));
     this.fallTime += dt;
+    // the ball tumbles as fast as it is travelling on the way down
+    this.roll(this.fallVelocity.length() * dt);
 
     if (this.fallTime >= FALL_DURATION) {
       this.state = 'gameover';
+      this.dimBackground();
       const newBest = this.score > this.best;
       if (newBest) {
         this.best = this.score;

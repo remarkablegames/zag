@@ -30,6 +30,9 @@ const TITLE_TO = new Color(0xee / 255, 0xc0 / 255, 0xc6 / 255);
 /** Two hues alternate so a capture of the cover stays in a small palette. */
 const COVER_HUE_STEP = 0.5;
 
+/** Backdrop hue, matching the indigo the game rests on, kept fixed here. */
+const COVER_BACKGROUND_HUE = 0.68;
+
 // used to measure letters with the same font string drawText builds
 const measureContext = document.createElement('canvas').getContext('2d');
 
@@ -41,6 +44,14 @@ const measureContext = document.createElement('canvas').getContext('2d');
 export class ZagCover extends ZagScene {
   constructor() {
     super(COVER_HUE_STEP);
+  }
+
+  /**
+   * The backdrop keeps one hue here, so a capture of the cover stays
+   * in the same small palette every time.
+   */
+  protected override startingBackgroundHue(): number {
+    return COVER_BACKGROUND_HUE;
   }
 
   protected override updateMotion(): void {
