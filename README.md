@@ -7,11 +7,37 @@
 [![release](https://img.shields.io/github/v/release/remarkablegames/zag)](https://github.com/remarkablegames/zag/releases)
 [![build](https://github.com/remarkablegames/zag/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/zag/actions/workflows/build.yml)
 
-⚡ Zig zag your way forward!
+⚡ Zigzag your way forward!
 
 Play the game on:
 
 - [remarkablegames](https://remarkablegames.org/zag/)
+
+## How to Play
+
+The ball rolls along a narrow path that zigzags, turning 90 degrees with each line. Tap, click, or press **Space** to turn.
+
+Time your turn just right. Turn too early or too late, and the ball falls off.
+
+Earn 1 point for each line you cross. The ball speeds up as you play and your best score is saved.
+
+## Controls
+
+Turn with:
+
+- Tap or click
+- Space, Enter, or ↑
+- Gamepad A
+
+## Features
+
+- Procedurally generated paths
+- Mouse, touch, keyboard, and gamepad support
+- Best score is saved to `localStorage`
+- Speed that ramps up as you play
+- A ball with a trail, squash-and-stretch turns, and a fall animation
+- Sound effects for turns, scoring, falling, and game over
+- Responsive design for desktop and mobile
 
 ## Prerequisites
 
