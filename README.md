@@ -97,7 +97,3 @@ Your game is ready to be deployed!
 Builds the game and packages it into a Zip file in the `dist` folder.
 
 Your game can be uploaded to your server, [itch.io](https://itch.io/), etc.
-
-## License
-
-[MIT](LICENSE)
