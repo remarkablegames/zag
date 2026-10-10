@@ -13,6 +13,12 @@ Play the game on:
 
 - [remarkablegames](https://remarkablegames.org/zag/)
 
+Or download for desktop:
+
+- [Windows](https://github.com/remarkablegames/zag/releases/latest/download/windows.zip)
+- [macOS](https://github.com/remarkablegames/zag/releases/latest/download/macos.zip)
+- [Linux](https://github.com/remarkablegames/zag/releases/latest/download/linux.zip)
+
 ## How to Play
 
 The ball rolls along a narrow path that zigzags, turning 90 degrees with each line. Tap, click, or press **Space** to turn.
