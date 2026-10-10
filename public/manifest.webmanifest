@@ -1,7 +1,7 @@
 {
-  "short_name": "Zag",
-  "name": "Zag",
-  "description": "⚡ Zigzag your way forward!",
+  "short_name": "ZAG",
+  "name": "ZAG",
+  "description": "⚡ Zag your way forward!",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

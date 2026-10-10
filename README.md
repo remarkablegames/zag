@@ -1,13 +1,13 @@
 <p align="center">
-  <img src="public/logo.svg" alt="Zag">
+  <img src="public/logo.svg" alt="ZAG" width="400">
 </p>
 
-# Zag
+# ZAG
 
 [![release](https://img.shields.io/github/v/release/remarkablegames/zag)](https://github.com/remarkablegames/zag/releases)
 [![build](https://github.com/remarkablegames/zag/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/zag/actions/workflows/build.yml)
 
-⚡ Zigzag your way forward!
+⚡ Zag your way forward!
 
 Play the game on:
 

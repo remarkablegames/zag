@@ -1,5 +1,5 @@
 /**
- * Zag
+ * ZAG
  * - A tap-to-turn auto-runner built with LittleJS
  * - The ball zags along a path; tap to turn onto the next segment
  */
