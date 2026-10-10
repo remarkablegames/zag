@@ -45,6 +45,10 @@ Turn with:
 - Sound effects for turns, scoring, falling, and game over
 - Responsive design for desktop and mobile
 
+## Credits
+
+- [Lofi hip hop Volume 1](https://jjbbllkk.itch.io/lo-fi-hip-hop-volume-1) by [Jeremy Leaird-Koch](https://rmr.media/)
+
 ## Prerequisites
 
 [nvm](https://github.com/nvm-sh/nvm#installing-and-updating):
