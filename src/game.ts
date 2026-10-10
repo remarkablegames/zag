@@ -1,12 +1,8 @@
-/*
-    Little JS TypeScript Demo
-    - A simple starter project
-    - Shows how to use LittleJS with modules
-*/
-
-'use strict';
-
-// import LittleJS module
+/**
+ * Zag
+ * - A tap-to-turn auto-runner built with LittleJS
+ * - The ball zags along a path; tap to turn onto the next segment
+ */
 import * as LittleJS from 'littlejsengine';
 
 import {
@@ -17,18 +13,10 @@ import {
   gameUpdatePost,
 } from './lifecycles';
 
-// show the LittleJS splash screen
-LittleJS.setShowSplashScreen(true);
-
-// fix texture bleeding by shrinking tile slightly
-LittleJS.setTileDefaultBleed(0.5);
-
-// Startup LittleJS Engine
 void LittleJS.engineInit(
   gameInit,
   gameUpdate,
   gameUpdatePost,
   gameRender,
   gameRenderPost,
-  ['tiles.png'],
 );

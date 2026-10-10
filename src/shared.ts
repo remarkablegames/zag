@@ -1,8 +1,7 @@
-import type { ParticleEmitter } from 'littlejsengine';
+import type { ZagGame } from './zag/game';
 
-let _particleEmitter: ParticleEmitter;
+let _game: ZagGame;
 
-export const setParticleEmitter = (particleEmitter: ParticleEmitter) =>
-  (_particleEmitter = particleEmitter);
+export const setGame = (game: ZagGame) => (_game = game);
 
-export const getParticleEmitter = () => _particleEmitter;
+export const getGame = () => _game;

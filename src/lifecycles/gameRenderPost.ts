@@ -1,6 +1,3 @@
-import * as LittleJS from 'littlejsengine';
-import { vec2 } from 'littlejsengine';
+import { noop } from '../utils';
 
-export function gameRenderPost() {
-  LittleJS.drawTextScreen('Zag', vec2(LittleJS.mainCanvasSize.x / 2, 80), 80);
-}
+export const gameRenderPost = noop;
