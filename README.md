@@ -101,3 +101,13 @@ Your game is ready to be deployed!
 Builds the game and packages it into a Zip file in the `dist` folder.
 
 Your game can be uploaded to your server, [itch.io](https://itch.io/), etc.
+
+## Testing
+
+### Cover
+
+Add the `cover` query parameter to view an animated cover:
+
+```
+http://localhost:5173/?cover
+```
