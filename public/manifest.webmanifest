@@ -1,7 +1,7 @@
 {
   "short_name": "ZAG",
   "name": "ZAG",
-  "description": "⚡ ZAG is a tap-to-turn arcade game where you zag your way forward!",
+  "description": "⚡ ZAG is a tap-to-turn arcade game where you zigzag your way forward!",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
