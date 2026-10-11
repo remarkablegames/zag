@@ -7,7 +7,7 @@
 [![release](https://img.shields.io/github/v/release/remarkablegames/zag)](https://github.com/remarkablegames/zag/releases)
 [![build](https://github.com/remarkablegames/zag/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablegames/zag/actions/workflows/build.yml)
 
-⚡ Zag your way forward!
+⚡ **ZAG** is a tap-to-turn arcade game where you zag your way forward!
 
 Play in your browser:
 
