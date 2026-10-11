@@ -129,4 +129,6 @@ jobs:
         with:
           token: ${{ secrets.WAVEDASH_TOKEN }}
           game-id: ${{ secrets.WAVEDASH_GAME_ID }}
+          # WavedashPlugin calls init() through a dynamic dispatch
+          inject-init: false
           build-message: ${{ needs.release.outputs.tag_name }}
