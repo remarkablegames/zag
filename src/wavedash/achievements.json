@@ -1,0 +1,50 @@
+{
+  "stats": [
+    {
+      "identifier": "HIGH_SCORE",
+      "display_name": "High Score"
+    },
+    {
+      "identifier": "RUNS_PLAYED",
+      "display_name": "Runs Played"
+    }
+  ],
+  "achievements": [
+    {
+      "identifier": "FIRST_RUN",
+      "display_name": "First Zag",
+      "description": "Finish your first run",
+      "stat_requirement": {
+        "stat": "RUNS_PLAYED",
+        "threshold": 1
+      }
+    },
+    {
+      "identifier": "SCORE_10",
+      "display_name": "On a Roll",
+      "description": "Score 10 in a single run",
+      "stat_requirement": {
+        "stat": "HIGH_SCORE",
+        "threshold": 10
+      }
+    },
+    {
+      "identifier": "SCORE_50",
+      "display_name": "Right on Cue",
+      "description": "Score 50 in a single run",
+      "stat_requirement": {
+        "stat": "HIGH_SCORE",
+        "threshold": 50
+      }
+    },
+    {
+      "identifier": "SCORE_100",
+      "display_name": "The Long and Winding Road",
+      "description": "Score 100 in a single run",
+      "stat_requirement": {
+        "stat": "HIGH_SCORE",
+        "threshold": 100
+      }
+    }
+  ]
+}

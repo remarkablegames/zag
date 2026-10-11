@@ -20,7 +20,7 @@ export const HIGH_SCORE_LEADERBOARD = 'high_score';
  * {@link https://wavedash.com/dev-portal/remarkablegames/zig-zag/stats}
  */
 const HIGH_SCORE_STAT = 'HIGH_SCORE';
-const RUNS_STAT = 'RUNS';
+const RUNS_PLAYED_STAT = 'RUNS_PLAYED';
 
 /** Cloud save slot holding the high score, kept by Wavedash across devices. */
 const CLOUD_SLOT = 0;
@@ -95,6 +95,6 @@ export async function loadHighScore(): Promise<number> {
  * load, so a run ended before they arrive does not reset it to 1.
  */
 export async function countRun(): Promise<void> {
-  const runs = ((await wavedash?.getStat(RUNS_STAT)) ?? 0) + 1;
-  await wavedash?.setStat(RUNS_STAT, runs, true);
+  const runs = ((await wavedash?.getStat(RUNS_PLAYED_STAT)) ?? 0) + 1;
+  await wavedash?.setStat(RUNS_PLAYED_STAT, runs, true);
 }
