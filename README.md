@@ -9,8 +9,10 @@
 
 ⚡ Zag your way forward!
 
-Play the game on:
+Play in your browser:
 
+- [Wavedash](https://wavedash.com/games/zig-zag)
+- [itch.io](https://remarkablegames.itch.io/zag)
 - [remarkablegames](https://remarkablegames.org/zag/)
 
 Or download for desktop:
@@ -25,7 +27,7 @@ The ball rolls along a narrow path that zigzags, turning 90 degrees with each li
 
 Time your turn just right. Turn too early or too late, and the ball falls off.
 
-Earn 1 point for each line you cross. The ball speeds up as you play and your best score is saved.
+Earn 1 point for each line you cross. The ball speeds up as you play and your high score is saved.
 
 ## Controls
 
@@ -39,11 +41,12 @@ Turn with:
 
 - Procedurally generated paths
 - Mouse, touch, keyboard, and gamepad support
-- Best score is saved to `localStorage`
+- Responsive design for desktop and mobile
 - Speed that ramps up as you play
 - A ball with a trail, squash-and-stretch turns, and a fall animation
 - Sound effects for turns, scoring, falling, and game over
-- Responsive design for desktop and mobile
+- High score is saved to `localStorage`
+- Online leaderboard, cloud saves, and achievements on [Wavedash](https://wavedash.com)
 
 ## Credits
 
