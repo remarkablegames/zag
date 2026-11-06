@@ -1,0 +1,27 @@
+{
+  "name": "ZAG",
+  "short_name": "ZAG",
+  "description": "⚡ ZAG is a tap-to-turn arcade game where you zigzag your way forward!",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#16182e",
+  "theme_color": "#16182e",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
