@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1216 512">
+  <title>ZAG</title>
+  <defs>
+    <linearGradient id="path" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#7ee8fa" />
+      <stop offset="1" stop-color="#a0e9c1" />
+    </linearGradient>
+    <linearGradient id="wordmark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7ee8fa" />
+      <stop offset="0.5" stop-color="#a0e9c1" />
+      <stop offset="1" stop-color="#eec0c6" />
+    </linearGradient>
+  </defs>
+  <rect width="1216" height="512" rx="104" fill="#16182e" />
+  <g transform="translate(5.4 -37.8) scale(1.15)">
+    <path
+      d="M104 368h104v-104h104v-104h88"
+      fill="none"
+      stroke="url(#path)"
+      stroke-width="44"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <circle
+      cx="400"
+      cy="160"
+      r="34"
+      fill="#fff"
+      stroke="#16182e"
+      stroke-width="10"
+    />
+  </g>
+  <path
+    d="M604 180h112l-112 150h112M782 330L839 180L896 330M800 290H878M1049 187A78 78 0 1 0 1072 306L1086 262H1018"
+    fill="none"
+    stroke="url(#wordmark)"
+    stroke-width="48"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
